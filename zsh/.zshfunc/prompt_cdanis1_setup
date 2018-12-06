@@ -3,6 +3,8 @@
 #   - never abbrevs paths with ...
 #   - chooses if prompt spans lines based on terminal width
 
+# TODO: make some part of this red iff root?
+
 prompt_cdanis1_help () {
   cat <<'EOF'
 This prompt is color-scheme-able.  You can invoke it thus:
