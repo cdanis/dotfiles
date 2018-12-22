@@ -1,0 +1,27 @@
+#!/usr/bin/env ansible-playbook
+
+## example invocation:
+# ansible-playbook -i =(echo oni.of-sound-mind.com) ansible-install.yaml
+---
+
+- hosts: all
+  tasks:
+    - name: install required packages
+      package: name={{ item }} state=installed
+      become: yes
+      become_method: sudo
+      with_items:
+        - git
+        - tmux
+        - zsh
+        - stow
+
+    - name: clone dotfiles
+      git: repo=https://github.com/cdanis/dotfiles.git dest={{ ansible_env.HOME }}/dotfiles
+
+    - name: stow configs
+      command: chdir={{ ansible_env.HOME }}/dotfiles stow {{ item }}
+      with_items:
+        - zsh
+        - tmux
+        - git
