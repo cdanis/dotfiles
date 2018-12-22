@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 
 ## example invocation:
-# ansible-playbook -i =(echo oni.of-sound-mind.com) ansible-install.yaml
+# ansible-playbook -i oni.of-sound-mind.com, ansible-install.yaml
 ---
 
 - hosts: all
