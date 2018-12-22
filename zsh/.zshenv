@@ -1,3 +1,6 @@
+path=(~/bin ~/.local/bin $path)
+typeset -U PATH
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 if [[ $(hostname -f) = install*wikimedia* ]]; then
