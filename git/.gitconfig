@@ -1,3 +1,15 @@
 [user]
 	email = cdanis@gmail.com
 	name = Chris Danis
+
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig
+
+[url "https://github.com/"]
+	insteadOf = "git@github.com:"
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+# This looks mysterious, but is what stops a cloned-via-SSH repo
+# from being rewritten to HTTPS for push.
+[url "git@github.com:"]
+	pushInsteadOf = "git@github.com:"
