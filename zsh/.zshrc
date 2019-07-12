@@ -28,7 +28,7 @@ function xterm_precmd() {
 }
 
 function xterm_preexec() {
-    print -Pn '\e]2;%n@%m %# ' && print -n "${(q)1}\a"
+    print -Pn '\e]0;%n@%m %# ' && print -n "${(q)1}\a"
 }
 
 if [[ $TERM == (xterm*) ]]; then
