@@ -5,3 +5,4 @@
 
 * include a ssh/config broken into a common fragment and (when needed)
   per-machine fragments glued together using Include and a config.d dir
+  * problem: how to condition on origin machine hostname?
