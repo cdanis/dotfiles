@@ -24,8 +24,9 @@ setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_space
 
-# slashes are words dammit
-WORDCHARS=${WORDCHARS/\/}
+WORDCHARS=${WORDCHARS/\/}  # slashes are words dammit
+WORDCHARS=${WORDCHARS/=}   # and so are equalses
+
 
 # some hooks for xterm for now
 # TODO: screen/tmux
