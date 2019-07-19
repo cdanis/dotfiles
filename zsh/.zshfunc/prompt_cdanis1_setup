@@ -2,6 +2,7 @@
 # like adam1 but
 #   - never abbrevs paths with ...
 #   - chooses if prompt spans lines based on terminal width
+#   - super-cool 😻 EMOJI PROMPT 😻 BY THE HOUR 🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛
 
 prompt_cdanis1_help () {
   cat <<'EOF'
@@ -29,6 +30,9 @@ prompt_cdanis1_setup () {
   base_prompt_no_color="${base_prompt//(%K{[^\\\}]#\}|%k)/}"
   post_prompt_no_color="${post_prompt//(%K{[^\\\}]#\}|%k)/}"
 
+  # the delta between the server's 'local' time and my usual local time
+  prompt_tz_offset=$(($(date +%H) - $(TZ='America/New_York' date +%H)))
+
   add-zsh-hook precmd prompt_cdanis1_precmd
 }
 
@@ -36,6 +40,7 @@ prompt_cdanis1_precmd () {
   setopt localoptions noxtrace nowarncreateglobal
   local base_prompt_expanded_no_color base_prompt_etc_no_color
   local prompt_length
+  local hour_prompt hour
 
   base_prompt_expanded_no_color=$(print -P "$base_prompt_no_color")
   base_prompt_etc_no_color=$(print -P "$base_prompt_no_color%~")
@@ -45,7 +50,26 @@ prompt_cdanis1_precmd () {
   else
     path_prompt="%B%F{$prompt_cdanis1_color3}%~$prompt_newline%F{white}"
   fi
-  PS1="$base_prompt$path_prompt %# $post_prompt"
+  # what time is it? let's find out!
+  hour_prompt=""
+  # you should be asleep
+  for hour in {1..6} ; do
+    hour_prompt+="%($(($hour + $prompt_tz_offset))T,💤,)"
+  done
+  # time for coffee
+  for hour in {7..14} ; do
+    hour_prompt+="%($(($hour + $prompt_tz_offset))T,☕,)"
+  done
+  # little late for coffee, have tea instead
+  for hour in 15 16; do
+    hour_prompt+="%($(($hour + $prompt_tz_offset))T,🍵,)"
+  done
+  # how about a beer?
+  for hour in {17..23} 0 ; do
+    hour_prompt+="%($(($hour + $prompt_tz_offset))T,🍺,)"
+  done
+
+  PS1="$base_prompt$path_prompt %(!.⁉️ .$hour_prompt) $post_prompt"
   PS2="$base_prompt$path_prompt %_> $post_prompt"
   PS3="$base_prompt$path_prompt ?# $post_prompt"
 }
