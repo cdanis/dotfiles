@@ -60,10 +60,11 @@ prompt_cdanis1_precmd () {
   for hour in {7..14} ; do
     hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,☕,)"
   done
-  # little late for coffee, have tea instead
-  for hour in 15 16; do
-    hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,🍵,)"
-  done
+  # little late for coffee, have "tea" instead
+  hour=15
+  hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,🍵,)"
+  hour=16
+  hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,%(20t,🍁,🍵),)"
   # how about a beer?
   for hour in {17..23} 0 ; do
     hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,🍺,)"
