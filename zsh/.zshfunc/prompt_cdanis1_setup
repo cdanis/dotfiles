@@ -11,12 +11,8 @@ This prompt is color-scheme-able.  You can invoke it thus:
 
 where the colors are for the user@host background, current working
 directory, and current working directory if the prompt is split over
-two lines respectively.  The default colors are blue, cyan and green.
+two lines, respectively.  The default colors are blue, cyan and green.
 This theme works best with a dark background.
-
-Recommended fonts for this theme: nexus or vga or similar.  If you
-don't have any of these, then specify the `plain' option to use 7-bit
-replacements for the 8-bit characters.
 EOF
 }
 
