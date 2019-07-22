@@ -78,7 +78,7 @@ prompt_cdanis1_precmd () {
   for minute in {45..59} {0..15} ; do
     clock_prompt+="%(${minute}t,"
     for hour in {0..23}; do
-      clock_prompt+="%(${hour}T,$clocks_top[$(( ((12 + $hour - $prompt_tz_offset)%12) + 1))],)"
+      clock_prompt+="%(${hour}T,$clocks_top[$(( ((12 + $hour - $prompt_tz_offset + (($minute>44)?1:0) )%12) + 1))],)"
     done
     clock_prompt+=",)"
   done
