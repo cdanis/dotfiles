@@ -30,8 +30,9 @@ prompt_cdanis1_setup () {
   base_prompt_no_color="${base_prompt//(%K{[^\\\}]#\}|%k)/}"
   post_prompt_no_color="${post_prompt//(%K{[^\\\}]#\}|%k)/}"
 
+  zmodload zsh/datetime
   # the delta between the server's 'local' time and my usual local time
-  prompt_tz_offset=$(( ($(date +%H) - $(TZ='America/New_York' date +%H) + 24) % 24 ))
+  prompt_tz_offset=$(( ($(strftime +%H) - $(TZ='America/New_York' strftime +%H) + 24) % 24 ))
 
   add-zsh-hook precmd prompt_cdanis1_precmd
 }
