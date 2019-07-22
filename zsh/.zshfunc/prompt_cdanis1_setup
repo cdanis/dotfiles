@@ -70,6 +70,9 @@ prompt_cdanis1_precmd () {
   for hour in {17..23} 0 ; do
     hour_prompt+="%($((($hour + $prompt_tz_offset)%24))T,🍺,)"
   done
+
+  # TODO: zmodload zsh/strftime and do that instead of this insanity
+  # or even shelling out to date above!
   clock_prompt=""
   clocks_top=(🕛 🕐 🕑 🕒 🕓 🕔 🕕 🕖 🕗 🕘 🕙 🕚)
   for minute in {45..59} {0..15} ; do
