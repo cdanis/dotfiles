@@ -52,6 +52,10 @@ if _on_wmf_prod ; then
     alias last-puppet-run='/etc/update-motd.d/97-last-puppet-run'
 fi
 
+function wttr() {
+    curl https://wttr.in/"${1:-}"
+}
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
