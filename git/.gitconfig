@@ -2,6 +2,9 @@
 	email = cdanis@gmail.com
 	name = Chris Danis
 
+[diff]
+    noprefix = true
+
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig
 
@@ -16,9 +19,12 @@
 
 [url "https://gerrit.wikimedia.org/r/"]
 	insteadOf = ssh://cdanis@gerrit.wikimedia.org:29418/
+	insteadOf = ssh://gerrit.wikimedia.org:29418/
 [url "ssh://cdanis@gerrit.wikimedia.org:29418/"]
 	pushInsteadOf = https://gerrit.wikimedia.org/r/
 # This looks mysterious, but is what stops a cloned-via-SSH repo
 # from being rewritten to HTTPS for push.
 [url "ssh://cdanis@gerrit.wikimedia.org:29418/"]
 	pushInsteadOf = ssh://cdanis@gerrit.wikimedia.org:29418/
+[url "ssh://gerrit.wikimedia.org:29418/"]
+	pushInsteadOf = ssh://gerrit.wikimedia.org:29418/
