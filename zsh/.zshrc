@@ -56,6 +56,15 @@ function wttr() {
     curl https://wttr.in/"${1:-}"
 }
 
+# for use on curl commandlines
+# usage: curl -v --otherflags $(RESOLVE URL hostname)
+# example: curl -v $(RESOLVE https://en.wikipedia.org/wiki/Special:BlankPage text-lb.eqsin.wikimedia.org)
+function RESOLVE() {
+    local URL="$1"
+    local HOST="$2"
+    echo '--resolve' $(python3 -c 'import socket;import sys; import urllib.parse as up;u=up.urlparse(sys.argv[1]);print(u.netloc+((":"+("443" if u.scheme == "https" else "80") if u.port is None else "")))' "$URL"):$(dig +short "$HOST") "$URL"
+}
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
