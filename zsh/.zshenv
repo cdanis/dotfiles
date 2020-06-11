@@ -1,6 +1,9 @@
 path=(~/bin ~/.local/bin $path)
 typeset -U PATH
 
+export MOSH_SERVER_NETWORK_TMOUT=1209600  # 2 weeks
+export MOSH_SERVER_SIGNAL_TMOUT=86400  # 1 day
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 function() {
