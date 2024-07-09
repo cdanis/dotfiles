@@ -28,3 +28,12 @@
 	pushInsteadOf = ssh://cdanis@gerrit.wikimedia.org:29418/
 [url "ssh://gerrit.wikimedia.org:29418/"]
 	pushInsteadOf = ssh://gerrit.wikimedia.org:29418/
+
+[url "https://gitlab.wikimedia.org/"]
+	insteadOf = git@gitlab.wikimedia.org:
+[url "git@gitlab.wikimedia.org:"]
+	pushInsteadOf = https://gitlab.wikimedia.org/
+# This looks mysterious, but is what stops a cloned-via-SSH repo
+# from being rewritten to HTTPS for push.
+[url "git@gitlab.wikimedia.org:"]
+	pushInsteadOf = git@gitlab.wikimedia.org:
