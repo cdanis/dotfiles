@@ -37,3 +37,5 @@
 # from being rewritten to HTTPS for push.
 [url "git@gitlab.wikimedia.org:"]
 	pushInsteadOf = git@gitlab.wikimedia.org:
+[init]
+	defaultBranch = main
