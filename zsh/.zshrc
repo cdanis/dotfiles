@@ -57,12 +57,20 @@ function _on_wmf_prod() {
 }
 
 if _on_wmf_prod ; then
-    alias last-puppet-run='/etc/update-motd.d/97-last-puppet-run'
+    alias last-puppet-run='sudo /etc/update-motd.d/97-last-puppet-run'
 fi
 
 function wttr() {
     curl https://wttr.in/"${1:-}"
 }
+
+if [[ "$(hostname -f)" = wmftop.nucleosynth.space ]]; then
+    alias bright='sudo ddccontrol -p -r 0x10 -w'
+fi
+
+alias codeon='export EDITOR="code -w"'
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # for use on curl commandlines
 # usage: curl -v --otherflags $(RESOLVE URL hostname)
