@@ -64,9 +64,14 @@ function wttr() {
     curl https://wttr.in/"${1:-}"
 }
 
-if [[ "$(hostname -f)" = wmftop.nucleosynth.space ]]; then
-    alias bright='sudo ddccontrol -p -r 0x10 -w'
-fi
+
+case "$(hostname -f)" in
+wmftop.nucleosynth.space|shardene.nucleosynth.space)
+    alias bright='sudo ddccontrol -p -r 0x10 -w 100'
+    alias LAPTOP='sudo ddccontrol -p -r 0x60 -w 27'
+    alias DESKTOP='sudo ddccontrol -p -r 0x60 -w 15'
+    ;;
+esac
 
 alias codeon='export EDITOR="code -w"'
 
@@ -80,6 +85,7 @@ function RESOLVE() {
     local HOST="$2"
     echo '--resolve' $(python3 -c 'import socket;import sys; import urllib.parse as up;u=up.urlparse(sys.argv[1]);print(u.netloc+((":"+("443" if u.scheme == "https" else "80") if u.port is None else "")))' "$URL"):$(dig +short "$HOST") "$URL"
 }
+# XXX: --connect-to has obsoleted this :D
 
 # Use modern completion system
 autoload -Uz compinit
