@@ -67,7 +67,7 @@ function wttr() {
 
 case "$(hostname -f)" in
 wmftop.nucleosynth.space|shardene.nucleosynth.space)
-    alias bright='sudo ddccontrol -p -r 0x10 -w 100'
+    alias bright='sudo ddccontrol -p -r 0x10 -w'
     alias LAPTOP='sudo ddccontrol -p -r 0x60 -w 27'
     alias DESKTOP='sudo ddccontrol -p -r 0x60 -w 15'
     ;;
